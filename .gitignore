@@ -2,5 +2,5 @@
 vendor
 
 # Files
-App/Core/Configs/Env.example.php
+.env
 .DS_Store

@@ -1,9 +1,7 @@
 <?php
 require(__DIR__ . '/../../../vendor/autoload.php');
 
-use App\Core\Configs\Env;
-
-if(Env::ENVIRONMENT === Env::DEVELOPMENT) {
+if(getenv('ENV') === 'DEVELOPMENT') {
   ini_set('display_errors',1);
   ini_set('display_startup_erros',1);
   error_reporting(E_ALL);
@@ -33,3 +31,8 @@ $container['notFoundHandler'] = function($container) {
 };
 
 $app = new \Slim\App($container);
+
+$app->add(new Tuupola\Middleware\HttpBasicAuthentication([
+  "secure" => getenv('ENV') === 'PRODUCTION',
+  "users"  => [ getenv('BASIC_AUTHENTICATION_USERNAME') => getenv('BASIC_AUTHENTICATION_PASSWORD') ]
+]));

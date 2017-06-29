@@ -9,7 +9,7 @@ class Base {
 
   public function __construct() {
     # Create and config elastic search engine
-    $this->search_client = ClientBuilder::create()->setHosts([ Env::ELASTIC_SEARCH_HOSTNAME ])->build();
+    $this->search_client = ClientBuilder::create()->setHosts([ getenv('ELASTIC_SEARCH_HOSTNAME') ])->build();
   }
 
   public function deleteIndex($index) {
