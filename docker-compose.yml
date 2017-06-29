@@ -1,0 +1,15 @@
+web:
+  container_name: cid10_api_web
+  build: .
+  volumes:
+    - .:/var/www/html
+  ports:
+    - "8080:80"
+  links:
+    - elasticsearch
+
+elasticsearch:
+  image: library/elasticsearch
+  container_name: cid10_api_elasticsearch
+  ports:
+    - "9200:9200"

@@ -1,0 +1,6 @@
+# Folders
+vendor
+
+# Files
+App/Core/Configs/Env.example.php
+.DS_Store
