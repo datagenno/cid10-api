@@ -9,7 +9,8 @@
   "require" : {
     "slim/slim" : "3.8.1",
     "elasticsearch/elasticsearch" : "5.2.0",
-    "tuupola/slim-basic-auth" : "3.0.0-rc-1"
+    "tuupola/slim-basic-auth" : "3.0.0-rc-1",
+    "vlucas/phpdotenv" : "2.4.0"
   },
 
   "autoload": {

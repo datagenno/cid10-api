@@ -1,6 +1,9 @@
 <?php
 require(__DIR__ . '/../../../vendor/autoload.php');
 
+$dotenv = new Dotenv\Dotenv(__DIR__);
+$dotenv->load();
+
 if(getenv('ENV') === 'DEVELOPMENT') {
   ini_set('display_errors',1);
   ini_set('display_startup_erros',1);
