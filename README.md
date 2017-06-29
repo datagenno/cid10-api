@@ -1,16 +1,63 @@
-# O projeto
-  Trata-se de uma API feita em PHP utilizando elastic search como engine de busca importando os registros do CID10 (mais 12 mil)
+# Sobre o Projeto
 
-# Para importar os dados:
-  make run-command (And then type "DiseaseImporter")
+Trata-se de uma API feita em PHP utilizando [Elasticsearch](https://www.elastic.co/products/elasticsearch) como engine de busca importando os registros do CID10 (mais 12 mil).
 
-# Para acessar o web container no docker
-  make access-web-container
+### Para importar os dados:
+    make import
 
-# Exemplos do endPoints
-  * /v1/diseases/dor*
-  * /v1/diseases/dor*/0 (with page started from zero)
-  * /v1/diseases/dor*/0/30 (with page and results by page)
+### Para acessar o web container no docker
+    make bash
 
-# Créditos
-  Os dados foram removidos daqui: https://gist.github.com/manuholiveira/9441735
+### Créditos
+Os dados utilizados foram baseados neste [gist](https://gist.github.com/manuholiveira/9441735) da [@manuholiveira](https://github.com/manuholiveira).
+
+___
+
+# API
+
+## Busca [/v1/search/{termo}/{pageStart}/{pageEnd}]
+
+### Buscar CID10 por condição ou código [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Basic token
+
++ Parameters
+
+    + termo: neurof* (string, required)
+    + pageStart: 0 (number, optional)
+    + pageEnd: 0 (number, optional)
+
+
++ Response 200
+
+        {
+          "terms": "neurof*",
+          "found": 1,
+          "per_page": 30,
+          "displayed": 1,
+          "pages": 0,
+          "current_page": 0,
+          "results": [
+              {
+                  "code": "Q85.0",
+                  "value": "Neurofibromatose (não-maligna)"
+              }
+          ]
+        }
+
++ Response 404
+
+        {
+          "error": true,
+          "message": "request_not_found"
+        }
+
+### Exemplos
+
+* `/v1/search/dor`
+* `/v1/search/dor*/0` (resultados da primeira página)
+* `/v1/search/dor*/0/30` (30 resultados por página)

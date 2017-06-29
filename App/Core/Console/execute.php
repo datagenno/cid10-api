@@ -2,7 +2,7 @@
 <?php
 require_once(__DIR__ . "/../Configs/bootstrap.php");
 
-$command_name = readline("Command name: ");
+$command_name = $argv[1];
 $command_name = ucfirst($command_name);
 
 $command_class = "App\\Core\\Console\\Commands\\{$command_name}";

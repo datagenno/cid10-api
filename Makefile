@@ -1,5 +1,5 @@
-access-web-container:
-	docker exec -it cid10_api_web bash
+bash:
+	docker-compose run --rm web bash
 
-run-command:
-	docker exec -it cid10_api_web php App/Core/Console/execute.php bash
+import:
+	docker-compose run --rm web php App/Core/Console/execute.php Import

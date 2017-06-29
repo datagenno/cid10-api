@@ -3,9 +3,9 @@ namespace App\V1\Models;
 
 use App\Core\Models\Base;
 
-class Disease extends Base {
+class Search extends Base {
   public function createIndex() {
-    $configs['index'] = 'diseases_api';
+    $configs['index'] = 'search_api';
     $configs['body'] = [
       'settings' => [
         'number_of_shards'  => 3,
@@ -22,7 +22,7 @@ class Disease extends Base {
       ],
 
       'mappings' => [
-        'disease' => [
+        'search' => [
           'properties' => [
             'code' => [
               'type'     => 'string',
@@ -42,8 +42,8 @@ class Disease extends Base {
   }
 
   public function import(array $data = array()) {
-    $configs['index'] = 'diseases_api';
-    $configs['type']  = 'disease';
+    $configs['index'] = 'search_api';
+    $configs['type']  = 'search';
     $configs['body']  = $data;
 
     $this->search_client->index($configs);
@@ -71,7 +71,7 @@ class Disease extends Base {
   }
 
   private function getSearchConfig($terms, $page = 0, $results_by_page = 30) {
-    $configs['index'] = 'diseases_api';
+    $configs['index'] = 'search_api';
     $configs['size']  = $results_by_page;
     $configs['from']  = floor($page * $results_by_page);
     $configs['body'] = [
