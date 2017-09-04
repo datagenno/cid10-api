@@ -21,6 +21,6 @@ class Base {
   }
 
   public function indexExists($index) {
-    return $this->search_client->indices()->exists(array('index' => $index ));
+    return $this->search_client->indices()->exists(array('index' => $index));
   }
 }

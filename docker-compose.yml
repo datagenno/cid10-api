@@ -1,7 +1,6 @@
 web:
   container_name: cid10_api_web
   build: .
-  image: datagenno/cid10-api
   volumes:
     - .:/var/www/html
   ports:
