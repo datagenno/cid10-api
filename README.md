@@ -15,7 +15,7 @@ ___
 
 # API
 
-## Busca [/v1/search/{termo}/{pageStart}/{pageEnd}]
+## Busca [/v2/search/{pageStart}/{pageEnd}?q={term}]
 
 ### Buscar CID10 por condição ou código [GET]
 
@@ -27,7 +27,7 @@ ___
 
 + Parameters
 
-    + termo: neurof* (string, required)
+    + term: neurof* (string, required)
     + pageStart: 0 (number, optional)
     + pageEnd: 0 (number, optional)
 
@@ -58,6 +58,6 @@ ___
 
 ### Exemplos
 
-* `/v1/search/dor`
-* `/v1/search/dor*/0` (resultados da primeira página)
-* `/v1/search/dor*/0/30` (30 resultados por página)
+* `/v2/search?q=dor`
+* `/v2/search/0?q=dor*` (resultados da primeira página)
+* `/v2/search/0/30?q=dor*` (30 resultados por página)

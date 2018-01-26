@@ -79,3 +79,6 @@ RUN export PYTHON
 RUN groupadd deployer && useradd -g deployer deployer && \
     sed -i.back 's/export APACHE_RUN_USER=www-data/export APACHE_RUN_USER=deployer/g' /etc/apache2/envvars && \
     sed -i.back 's/export APACHE_RUN_GROUP=www-data/export APACHE_RUN_GROUP=deployer/g' /etc/apache2/envvars
+
+
+RUN composer update
